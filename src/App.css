@@ -1,7 +1,21 @@
 .App {
   text-align: center;
 }
-
+.Date {
+  padding-top: 150px;
+}
+.navbar{
+  display: flex;
+}
+#heading{
+  padding-top: 15px;
+}
+#exampledate{
+  width: 50px;
+}
+#name {
+  color: white;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
