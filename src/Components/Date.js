@@ -1,16 +1,13 @@
 import React from 'react';
-import {Label, Input } from 'reactstrap';
-const Date = (props) => {
+const Dat = (props) => {
+  var today = new Date();
+  var month=today.toLocaleString('default', { month: 'long' });
+  var date = today.getDate();
+  var year = today.getFullYear();
+
     return (<div className="Date" >
-         <Label for="exampleDate">Date</Label>
-        <Input
-          type="date"
-          name="date"
-          id="exampleDate"
-          placeholder="date placeholder"
-        />
-    
+       {date+" "+ month +", "+year}
 </div>);
 }
 
-export default Date;
+export default Dat;

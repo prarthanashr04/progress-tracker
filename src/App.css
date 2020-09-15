@@ -2,7 +2,8 @@
   text-align: center;
 }
 .Date {
-  padding-top: 150px;
+  padding-top: 180px;
+  font-size:xx-large;
 }
 .navbar{
   display: flex;
