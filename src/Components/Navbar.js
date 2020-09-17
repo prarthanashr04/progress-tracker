@@ -5,8 +5,9 @@ const Header = (props) => {
     <Navbar fixed="top" dark color ="dark" >
       <div className="container">
         <NavbarBrand >
+          <div id="nav">
             <div id="logo"><img src={props.logo} alt={props.title} height="70" width="70" /></div>
-        <div id="heading">{props.title}</div></NavbarBrand>
+        <div id="heading">{props.title}</div></div></NavbarBrand>
         <div id ="name">
          {props.name}
         </div>

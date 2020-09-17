@@ -2,11 +2,18 @@
   text-align: center;
 }
 .Date {
-  padding-top: 180px;
+  padding-top: 120px;
   font-size:xx-large;
 }
-.navbar{
+#nav {
   display: flex;
+}
+.inlineclass{
+  display: inline-flex;
+}
+.col{
+  min-width: 40%;
+  padding:5px;
 }
 #heading{
   padding-top: 15px;
