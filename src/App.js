@@ -6,11 +6,11 @@ import PlannedSlots from './Components/Plannedslots';
 import ActualSlots from './Components/Actualslots';
 function App() {
   return (<div className="App">
-   <Header logo = './skillpill.png' title  = "progress tracker"  name = "Ritik"  />
-   <Dat />
-   <PlannedSlots />
-   <ActualSlots />
-   </div>   
+    <Header logo='./skillpill.png' title="progress tracker" name="Ritik" />
+    <Dat />
+    <ActualSlots config={[{"name":"production","Slots":4},{"name":"core","Slots":2}]} />
+    <PlannedSlots />
+  </div>
   );
 }
 
