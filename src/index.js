@@ -6,7 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App img="./bgimage.jpg"/>
   </React.StrictMode>,
   document.getElementById('root')
 );

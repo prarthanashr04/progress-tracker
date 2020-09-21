@@ -5,7 +5,7 @@ const PlanTask = (props) => {
     var cross=<Button>X</Button>;
     return (<div className="inlineclass">
     <input className="col" type="text" placeholder="Task Name" required/>
-    <input className="col" type="number" required/>
+    <input className="col" type="number" placeholder="Planned Slots" required/>
     {cross}
     </div>)
 }
@@ -17,17 +17,20 @@ function Add(){
         <div><PlanTask showCross={showCross}/><br/></div>
     );
 }
+function submit() {
+    alert();
+}
 const PlannedSlots = (props) => {
-    return (<div>
-    <h3>Let's plan our day</h3>
+    return (<div className="col-12 col-md-6">
+    <h1>Let's plan our day</h1>
     <div className="inlineclass">
         <h5 className="col">Task Name</h5>
         <h5 className="col">No. of Slots</h5>
     </div>
     <form>
     {tasks}
-    <Button onClick={Add}>Add</Button>
-    <input type="submit"/>
+    <Button color="primary" onClick={Add}>Add</Button>
+    <Button onClick={submit}>Submit</Button>
     </form>
 </div>);
 }
