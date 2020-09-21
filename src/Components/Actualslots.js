@@ -1,37 +1,44 @@
 import React from 'react';
-import { Button } from 'reactstrap';
-function submit(){
+import { Button, Form, Row, Col, Label, Input } from 'reactstrap';
+function submit() {
     alert();
 }
 const ActualSlots = (props) => {
     return (<div>
-        <div>
+        <div className="col-12 row row-content offset-2">
             <h1>Actual slots</h1>
         </div>
-        <div className="inlineclass">
-        <h3 className="col">{props.config[0].name}</h3>
-        <h3 className="col">{props.config[0].Slots}</h3>
-        <input className="col" type="number" min="1" max="10" required/>
+        <div className="col-12 col-md-6">
+            <Form>
+                <Row className="form-group">
+                    <Label htmlFor="taskname" md={2}>{props.config[0].name}</Label>
+                    <Label htmlFor="planslots" md={2}>{props.config[0].Slots}</Label>
+                    <input className="col" id="actualslot" placeholder="Slots Given" type="number" min="1" max="10" required />
+                
+                </Row>
+
+                <Row className="form-group">
+                    <Label htmlFor="taskname" md={2}>{props.config[1].name}</Label>
+                    <Label htmlFor="taskslots" md={2}>{props.config[1].Slots}</Label>
+                    <input className="col"id="actualslot" placeholder="Slots Given" type="number" min="1" max="10" required />
+                </Row>
+
+                <Row className="form-group">
+                    <Label htmlFor="message" md={2}>Notes </Label>
+                    <textarea rows="4" className="col" name="comment"></textarea>
+                </Row>
+
+                <Row className="form-group">
+                    <Col md={{size: 10, offset: 2}}>
+                        <Button onClick={submit}>Submit</Button>
+                    </Col>
+                </Row>
+            </Form>
         </div>
-        <br />
-        <div className="inlineclass">
-        <h3 className="col">{props.config[1].name}</h3>
-        <h3 className="col">{props.config[1].Slots}</h3>
-        <input className="col" type="number" min="1" max="10" required/>
-        </div>
-        <br />
-        <div className="inlineclass">
-           <h3> Notes </h3>
-           <textarea rows="4" cols="50" name="comment"></textarea>
-        </div >
-        <br/>
-        <div className="inlineclass">
-        <Button onClick={submit}>Submit</Button>
-        </div >
-        
-        
-        
-</div>);
+
+
+
+    </div>);
 }
 
 export default ActualSlots;

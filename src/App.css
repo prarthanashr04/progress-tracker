@@ -1,5 +1,12 @@
 .App {
   text-align: center;
+  
+}
+body{
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+  
 }
 .Date {
   padding-top: 120px;
@@ -28,6 +35,8 @@
   height: 40vmin;
   pointer-events: none;
 }
+
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
