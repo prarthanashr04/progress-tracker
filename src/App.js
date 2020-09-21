@@ -24,14 +24,21 @@ class App extends Component {
     {
       var date,actual,planned
       date=<Dat /> ;
-      actual=<ActualSlots config={[{"name":"production","Slots":4},{"name":"core","Slots":2}]} /> ;
+      actual=<ActualSlots config={[{"name":"Production","Slots":4},{"name":"Core","Slots":2}]} /> ;
       planned=<PlannedSlots />
       
     }
   return (<div className="App" >
-    <Header logo = './skillpill.png' title  = "progress tracker"   />
-    {date}{actual}{planned}
-    
+    <Header logo = './skillpill.png' title  = "Progress Tracker"   />
+    {date}
+    <div className="row ">
+     <div className="col-12 col-md-6 parentform">
+     {planned}
+      </div> 
+      <div className="col-12 col-md-6 parentform">
+      {actual}
+      </div>
+    </div>
    </div>   
   );
   }

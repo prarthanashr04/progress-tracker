@@ -35,8 +35,17 @@ body{
   height: 40vmin;
   pointer-events: none;
 }
-
-
+.parentform{
+ 
+  justify-content: center;
+  display: inline-flex;
+  
+}
+.formslots{
+  background-color: white;
+  width:80%;
+  
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
