@@ -4,6 +4,12 @@ import Header from './Components/Navbar';
 import Dat from './Components/Date';
 import PlannedSlots from './Components/Plannedslots';
 import ActualSlots from './Components/Actualslots';
+import Login from './Components/Login'
+var templogin=[
+  {"Username":"HitJatin","Password":"#Jatin23"},
+  {"Username":"Prarthana","Password":"Prarthana"},
+  {"Username":"Ritik","Password":"Ritik"},
+]
 
 class App extends Component {
 
@@ -13,14 +19,23 @@ class App extends Component {
       member:{
         "name":"",
         "previous":{}
-      }
-    }
+      },
+      isModalOpen: false
+    };
+    this.toggleModal = this.toggleModal.bind(this);
   }
+
+  toggleModal() {
+    this.setState({
+      isModalOpen: !this.state.isModalOpen
+    });
+  }
+
 
   
   render(){
     document.body.style.backgroundImage = "url('./bgimage.jpg')";
-  if(this.state.member.name==="")
+  if(this.state.member.name!="")
     {
       var date,actual,planned
       date=<Dat /> ;
@@ -29,7 +44,7 @@ class App extends Component {
       
     }
   return (<div className="App" >
-    <Header logo = './skillpill.png' title  = "Progress Tracker"   />
+    <Header logo = './skillpill.png' title  = "Progress Tracker" name="Jatin" modalButton={this.toggleModal} />
     {date}
     <div className="row ">
      <div className="col-12 col-md-6 parentform">
@@ -39,6 +54,7 @@ class App extends Component {
       {actual}
       </div>
     </div>
+    <Login openModal={this.state.isModalOpen} modalButton={this.toggleModal}/>
    </div>   
   );
   }
