@@ -23,12 +23,33 @@ class App extends Component {
       isModalOpen: false
     };
     this.toggleModal = this.toggleModal.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
   }
+  handleLogin(event) {
 
+    alert("Username: " + this.username.value + ";" + " Remember: " + this.remember.checked);
+    event.preventDefault();
+
+  }
   toggleModal() {
     this.setState({
       isModalOpen: !this.state.isModalOpen
     });
+  }
+
+  login(event){
+    var i;
+    var userName=this.userName.value;
+    var passWord=document.getElementById("password").textContent;
+    alert(userName);
+    alert(passWord);
+    for(i=0;i<templogin.length;i++){
+      if(templogin[i].Username===userName){
+        if(templogin[i].Password===passWord)
+        alert("login succesful");
+      }
+    }
+    alert("failed");
   }
 
 
@@ -54,7 +75,7 @@ class App extends Component {
       {actual}
       </div>
     </div>
-    <Login openModal={this.state.isModalOpen} modalButton={this.toggleModal}/>
+    <Login openModal={this.state.isModalOpen} modalButton={this.toggleModal} login={this.handleLogin}/>
    </div>   
   );
   }

@@ -5,17 +5,10 @@ import Member from './Member';
 class Header extends Component {
   constructor(props) {
     super(props);
-    this.handleLogin = this.handleLogin.bind(this);
   }
   
 
 
-  handleLogin(event) {
-
-    alert("Username: " + this.username.value + ";" + " Remember: " + this.remember.checked);
-    event.preventDefault();
-
-  }
   render() {
     return (<div className="Header" >
       <Navbar fixed="top" dark color="dark" >

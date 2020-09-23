@@ -2,6 +2,15 @@ import React, { Component } from 'react';
 import {Button,Modal,ModalHeader,ModalBody,Form,FormGroup,Label,Input} from 'reactstrap';
 
 class Login extends Component {
+    constructor(props){
+        super(props);
+        this.handleLogin = this.handleLogin.bind(this);
+    }
+    handleLogin(event) {
+
+        alert("Username: " + this.username.value + ";" + " Remember: " + this.remember.checked);                                                                                   
+    
+      }
     render(){
         return(<div>
             <Modal isOpen={this.props.openModal} toggle={this.props.modalButton} >
