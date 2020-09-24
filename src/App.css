@@ -45,6 +45,12 @@ body{
 .formslots{
   background-color: white;
   width:80%;
+  margin:5%;
+  padding:2%;
+}
+
+.Date{
+  margin:5%;
   
 }
 
