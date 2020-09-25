@@ -23,31 +23,35 @@ class App extends Component {
       isModalOpen: false
     };
     this.toggleModal = this.toggleModal.bind(this);
-   
+    this.login = this.login.bind(this);
+
   }
-  
+
   toggleModal() {
     this.setState({
       isModalOpen: !this.state.isModalOpen
     });
   }
 
-  login(userName,passWord) {
-    var i;
+  login(userName, passWord) {
+    var i, check = 0;
     for (i = 0; i < templogin.length; i++) {
-      if (templogin[i].Username === userName) {
-        if (templogin[i].Password === passWord)
-          
-          {
-            alert("hgu");
-            this.setState({name : userName});
+      if (templogin[i].Username === userName && templogin[i].Password === passWord) {
+        this.setState({
+          member: {
+            "name": userName
           }
+        });
+        this.toggleModal();
+        check = 1;
+        break;
       }
     }
-    alert("failed");
+    if (check === 0)
+      alert("Incorrect UserName or Password ");
   }
 
-  
+
 
   render() {
     document.body.style.backgroundImage = "url('./bgimage.jpg')";
@@ -59,7 +63,7 @@ class App extends Component {
 
     }
     return (<div className="App" >
-      <Header logo='./skillpill.png' title="Progress Tracker" name="Jatin" modalButton={this.toggleModal} />
+      <Header logo='./skillpill.png' title="Progress Tracker" name={this.state.member.name} modalButton={this.toggleModal} />
       {date}
       <div className="row ">
         <div className="col-12 col-md-6 parentform">
@@ -69,7 +73,7 @@ class App extends Component {
           {planned}
         </div>
       </div>
-      <Login openModal={this.state.isModalOpen} modalButton={this.toggleModal} login={this.login}/>
+      <Login openModal={this.state.isModalOpen} modalButton={this.toggleModal} login={this.login} />
     </div>
     );
   }

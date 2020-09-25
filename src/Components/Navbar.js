@@ -19,7 +19,7 @@ class Header extends Component {
               <div id="heading">{this.props.title}</div></div></NavbarBrand>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <Member modalButton={this.props.modalButton}/>
+              <Member modalButton={this.props.modalButton} name={this.props.name}/>
             </NavItem>
           </Nav>
         </div>
