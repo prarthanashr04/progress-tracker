@@ -35,7 +35,8 @@ class App extends Component {
     var sec = cDate.getSeconds();
     var hrsMinsInSecs=(hrs*60*60)+(min*60)+sec;
     var dateInSeconds=timeInSeconds-hrsMinsInSecs;
-    if(dateInSeconds%2===1)dateInSeconds-1;
+    if(dateInSeconds%2===1)
+    dateInSeconds-=1;
     console.log(dateInSeconds);
     if(this.state.name!==""){
       fetch("https://mj3a9u0swa.execute-api.ap-south-1.amazonaws.com/dev?UserName=HitJatin&Date=1600885800")
