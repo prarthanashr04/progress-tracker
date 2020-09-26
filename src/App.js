@@ -16,15 +16,45 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      member: {
-        "name": "",
-        "previous": {}
-      },
-      isModalOpen: false
+      name: "",
+      previous: {},
+      isModalOpen: false,
+      isActual:false
     };
     this.toggleModal = this.toggleModal.bind(this);
     this.login = this.login.bind(this);
 
+  }
+
+  componentDidMount(){
+    var cDate=new Date();
+    var timeInMilliSeconds = cDate.getTime(); 
+    var timeInSeconds = Math.round(timeInMilliSeconds / 1000);
+    var hrs = cDate.getHours();
+    var min = cDate.getMinutes();
+    var sec = cDate.getSeconds();
+    var hrsMinsInSecs=(hrs*60*60)+(min*60)+sec;
+    var dateInSeconds=timeInSeconds-hrsMinsInSecs;
+    if(dateInSeconds%2===1)dateInSeconds-1;
+    console.log(dateInSeconds);
+    if(this.state.name!==""){
+      fetch("https://mj3a9u0swa.execute-api.ap-south-1.amazonaws.com/dev?UserName=HitJatin&Date=1600885800")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            isActual:true,
+            previous: result
+          });
+        },
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
+    }
   }
 
   toggleModal() {
@@ -38,9 +68,7 @@ class App extends Component {
     for (i = 0; i < templogin.length; i++) {
       if (templogin[i].Username === userName && templogin[i].Password === passWord) {
         this.setState({
-          member: {
-            "name": userName
-          }
+          name: userName
         });
         this.toggleModal();
         check = 1;
@@ -55,7 +83,7 @@ class App extends Component {
 
   render() {
     document.body.style.backgroundImage = "url('./bgimage.jpg')";
-    if (this.state.member.name !== "") {
+    if (this.state.name !== "") {
       var date, actual, planned
       date = <Dat />;
       actual = <ActualSlots config={[{ "name": "Production", "Slots": 4 }, { "name": "Core", "Slots": 2 }]} />;
@@ -63,7 +91,7 @@ class App extends Component {
 
     }
     return (<div className="App" >
-      <Header logo='./skillpill.png' title="Progress Tracker" name={this.state.member.name} modalButton={this.toggleModal} />
+      <Header logo='./skillpill.png' title="Progress Tracker" name={this.state.name} modalButton={this.toggleModal} />
       {date}
       <div className="row ">
         <div className="col-12 col-md-6 parentform">
