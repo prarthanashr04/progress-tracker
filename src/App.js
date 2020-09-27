@@ -19,7 +19,8 @@ class App extends Component {
       name: "",
       previous: {},
       isModalOpen: false,
-      isActual:false
+      isActual:false,
+      isPlanned:false
     };
     this.toggleModal = this.toggleModal.bind(this);
     this.login = this.login.bind(this);
@@ -27,17 +28,7 @@ class App extends Component {
   }
 
   componentDidMount(){
-    var cDate=new Date();
-    var timeInMilliSeconds = cDate.getTime(); 
-    var timeInSeconds = Math.round(timeInMilliSeconds / 1000);
-    var hrs = cDate.getHours();
-    var min = cDate.getMinutes();
-    var sec = cDate.getSeconds();
-    var hrsMinsInSecs=(hrs*60*60)+(min*60)+sec;
-    var dateInSeconds=timeInSeconds-hrsMinsInSecs;
-    if(dateInSeconds%2===1)
-    dateInSeconds-=1;
-    console.log(dateInSeconds);
+    
     if(this.state.name!==""){
       fetch("https://mj3a9u0swa.execute-api.ap-south-1.amazonaws.com/dev?UserName=HitJatin&Date=1600885800")
       .then(res => res.json())
@@ -46,12 +37,11 @@ class App extends Component {
           this.setState({
             isActual:true,
             previous: result
-          });
+          });console.log(result);
         },
         (error) => {
           this.setState({
-            isLoaded: true,
-            error
+            isActual: false
           });
         }
       )
@@ -69,7 +59,8 @@ class App extends Component {
     for (i = 0; i < templogin.length; i++) {
       if (templogin[i].Username === userName && templogin[i].Password === passWord) {
         this.setState({
-          name: userName
+          name: userName,
+          isPlanned:true
         });
         this.toggleModal();
         check = 1;
@@ -83,13 +74,12 @@ class App extends Component {
 
 
   render() {
+    var date, actual, planned;
     document.body.style.backgroundImage = "url('./bgimage.jpg')";
-    if (this.state.name !== "") {
-      var date, actual, planned
+    if (this.state.name!==""){
+      actual = <ActualSlots apiUrl="https://mj3a9u0swa.execute-api.ap-south-1.amazonaws.com/dev" userName={this.state.name}/>;
       date = <Dat />;
-      actual = <ActualSlots config={[{ "name": "Production", "Slots": 4 }, { "name": "Core", "Slots": 2 }]} />;
       planned = <PlannedSlots />
-
     }
     return (<div className="App" >
       <Header logo='./skillpill.png' title="Progress Tracker" name={this.state.name} modalButton={this.toggleModal} />
