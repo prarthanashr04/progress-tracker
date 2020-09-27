@@ -7,12 +7,13 @@ class Login extends Component {
         this.handleLogin = this.handleLogin.bind(this);
     }
     handleLogin(event) {
-    
+
+        event.preventDefault();
         //alert("Username: " + this.username.value + ";" +"Passowrd: "+ this.password.value + " Remember: " + this.remember.checked);
         var username=this.username.value;
         var password=this.password.value;
         this.props.login(username,password);
-        event.preventDefault();
+        
     
       }
     
