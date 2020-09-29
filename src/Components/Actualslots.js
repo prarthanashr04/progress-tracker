@@ -52,8 +52,8 @@ class ActualSlots extends Component {
                 </Row>
 
                 <Row className="form-group">
-                    <Label htmlFor="taskname" md={2}>{this.state.data.Production}</Label>
-                    <Label htmlFor="taskslots" md={2}>3</Label>
+                    <Label htmlFor="taskname" md={2}>Production</Label>
+                    <Label htmlFor="taskslots" md={2}>{this.state.data.Production}</Label>
                     <input className="col" id="prodActual" placeholder="Slots Given" type="number" min="1" max="10" required />
                 </Row>
 
