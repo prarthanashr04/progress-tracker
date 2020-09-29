@@ -10,7 +10,7 @@ class Member extends Component {
             </Button>
         </div>)
         else
-        return(<div>{this.props.name}</div>)
+        return(<div id="name">{this.props.name}</div>)
     }
 }
 export default Member;
