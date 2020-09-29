@@ -55,11 +55,70 @@ class App extends Component {
   submit(){
     if(document.getElementById("coreActual")!==null){
       var coreActual=document.getElementById("coreActual").value;
+      console.log( coreActual);
       var prodActual=document.getElementById("prodActual").value;
-      console.log(coreActual+" "+prodActual);
+      
+        // instantiate a headers object
+        var myHeaders = new Headers();
+        // add content type header to object
+        myHeaders.append("Content-Type", "application/json");
+        // using built in JSON utility package turn object to string and store in a variable
+        var raw = JSON.stringify({
+"UserName": "ritik",
+"Date":19862,
+"Name": "jojo",
+"Planned": {
+  "Core" : coreActual,
+  "Production":prodActual
+}
+
+});
+        // create a JSON object with parameters for API call and store in a variable
+        var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
+        };
+       
+        // make API call with parameters and use promises to get response
+        fetch("https://mj3a9u0swa.execute-api.ap-south-1.amazonaws.com/dev/", requestOptions)
+        .then(response => response.text())
+        .then(result => alert(JSON.parse(result).body))
+        .catch(error => console.log('error', error));
     }
+
     var corePlan=document.getElementById("plan0").value;
     var prodPlan=document.getElementById("plan1").value;
+       // instantiate a headers object
+       var myHeaders = new Headers();
+       // add content type header to object
+       myHeaders.append("Content-Type", "application/json");
+       // using built in JSON utility package turn object to string and store in a variable
+       var raw = JSON.stringify({
+"UserName": "ritik",
+"Date":19862,
+"Name": "jojo",
+"Planned": {
+ "Core" : corePlan,
+ "Production":prodPlan
+}
+
+});
+       // create a JSON object with parameters for API call and store in a variable
+       var requestOptions = {
+           method: 'POST',
+           headers: myHeaders,
+           body: raw,
+           redirect: 'follow'
+       };
+      
+       // make API call with parameters and use promises to get response
+       fetch("https://mj3a9u0swa.execute-api.ap-south-1.amazonaws.com/dev/", requestOptions)
+       .then(response => response.text())
+       .then(result => alert(JSON.parse(result).body))
+       .catch(error => console.log('error', error));
+   
     console.log(corePlan+" "+prodPlan);
   }
 
