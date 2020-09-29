@@ -3,10 +3,6 @@ import { Navbar, NavbarBrand, Nav, NavItem } from 'reactstrap';
 import Member from './Member';
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
-  }
-  
 
 
   render() {

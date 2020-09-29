@@ -5,6 +5,7 @@ import Dat from './Components/Date';
 import PlannedSlots from './Components/Plannedslots';
 import ActualSlots from './Components/Actualslots';
 import Login from './Components/Login'
+import Submit from './Components/Submit';
 var templogin = [
   { "Username": "HitJatin", "Password": "#Jatin23" },
   { "Username": "Prarthana", "Password": "Prarthana" },
@@ -24,28 +25,8 @@ class App extends Component {
     };
     this.toggleModal = this.toggleModal.bind(this);
     this.login = this.login.bind(this);
+    this.submit = this.submit.bind(this);
 
-  }
-
-  componentDidMount(){
-    
-    if(this.state.name!==""){
-      fetch("https://mj3a9u0swa.execute-api.ap-south-1.amazonaws.com/dev?UserName=HitJatin&Date=1600885800")
-      .then(res => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            isActual:true,
-            previous: result
-          });console.log(result);
-        },
-        (error) => {
-          this.setState({
-            isActual: false
-          });
-        }
-      )
-    }
   }
 
   toggleModal() {
@@ -71,6 +52,17 @@ class App extends Component {
       alert("Incorrect UserName or Password ");
   }
 
+  submit(){
+    if(document.getElementById("coreActual")!==null){
+      var coreActual=document.getElementById("coreActual").value;
+      var prodActual=document.getElementById("prodActual").value;
+      console.log(coreActual+" "+prodActual);
+    }
+    var corePlan=document.getElementById("plan0").value;
+    var prodPlan=document.getElementById("plan1").value;
+    console.log(corePlan+" "+prodPlan);
+  }
+
 
 
   render() {
@@ -79,7 +71,7 @@ class App extends Component {
     if (this.state.name!==""){
       actual = <ActualSlots apiUrl="https://mj3a9u0swa.execute-api.ap-south-1.amazonaws.com/dev" userName={this.state.name}/>;
       date = <Dat />;
-      planned = <PlannedSlots />
+      planned = <PlannedSlots config={["Core","Production"]}/>
     }
     return (<div className="App" >
       <Header logo='./skillpill.png' title="Progress Tracker" name={this.state.name} modalButton={this.toggleModal} />
@@ -93,6 +85,7 @@ class App extends Component {
         </div>
       </div>
       <Login openModal={this.state.isModalOpen} modalButton={this.toggleModal} login={this.login} />
+      <Submit onClick={this.submit}/>
     </div>
     );
   }

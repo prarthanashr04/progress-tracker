@@ -1,27 +1,15 @@
 import React, { Component } from 'react';
-import { Button,Form } from 'reactstrap';
-const PlanTask = (props) => {
-    if (props.showCross)
-        var cross = <Button>X</Button>;
-    return (<div className="inlineclass">
-        <input className="col" type="text" placeholder="Task Name" required />
-        <input className="col" type="number" placeholder="Planned Slots" required />
-        {cross}
-    </div>)
-}
-var showCross = false, tasks = [<div><PlanTask showCross={showCross} /><br /></div>]
-function Add() {
-    alert();
-    showCross = true;
-    tasks.push(
-        <div><PlanTask showCross={showCross} /><br /></div>
-    );
-}
-function submit() {
-    alert();
-}
-const PlannedSlots = (props) => {
-    return (<Form className="formslots">
+import { Form,Label } from 'reactstrap';
+
+class PlannedSlots extends Component{
+    render(){
+        var tasks=[];
+        for(var i=0;i<this.props.config.length;i++){
+            tasks.push(
+                <PlanTask name={this.props.config[i]} id={i}/>
+            )
+        }
+        return (<Form className="formslots">
         <div className="col-12 col-md-10">
             <h1>Let's plan our day</h1>
             <div className="inlineclass">
@@ -30,11 +18,19 @@ const PlannedSlots = (props) => {
             </div>
             <form>
                 {tasks}
-                <Button color="primary" onClick={Add}>Add</Button>
-                <Button onClick={submit}>Submit</Button>
             </form>
         </div>
     </Form>);
+    }
 }
 
+class PlanTask extends Component{
+    render(){
+        var id="plan"+this.props.id;
+        return(<div className="inlineclass">
+        <Label htmlFor="taskname" md={2}>{this.props.name}</Label>
+        <input id={id} className="col" type="number" placeholder="Planned Slots" required />
+    </div>);
+    }
+}
 export default PlannedSlots;
