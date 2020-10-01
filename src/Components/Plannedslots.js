@@ -12,7 +12,7 @@ class PlannedSlots extends Component{
         return (<Form className="formslots">
         <div className="col-12 col-md-10">
             <h1>Let's plan our day</h1>
-            <div className="inlineclass">
+            <div className="inlineclass ">
                 <h5 className="col">Task Name</h5>
                 <h5 className="col">No. of Slots</h5>
             </div>
@@ -27,8 +27,8 @@ class PlannedSlots extends Component{
 class PlanTask extends Component{
     render(){
         var id="plan"+this.props.id;
-        return(<div className="inlineclass">
-        <Label htmlFor="taskname" md={2}>{this.props.name}</Label>
+        return(<div className="inlineclass pslots">
+        <Label htmlFor="taskname" md={4}>{this.props.name}</Label>
         <input id={id} className="col" type="number" placeholder="Planned Slots" required />
     </div>);
     }
