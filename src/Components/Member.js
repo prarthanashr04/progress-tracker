@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component} from 'react';
 import {Button, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 
@@ -32,9 +32,11 @@ class Member extends Component {
             {this.props.name}
             </DropdownToggle>
             <DropdownMenu>
-              <DropdownItem >Past Record</DropdownItem>
+              <DropdownItem >Profile</DropdownItem>
+              <DropdownItem divider />
+              <DropdownItem >Daily Progress</DropdownItem>
               <DropdownItem >Consistency</DropdownItem>
-              <DropdownItem>Profile</DropdownItem>
+              <DropdownItem>Past Record</DropdownItem>
               <DropdownItem divider />
               <DropdownItem>Log out</DropdownItem>
             </DropdownMenu>

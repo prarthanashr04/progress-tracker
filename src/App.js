@@ -6,6 +6,9 @@ import PlannedSlots from './Components/Plannedslots';
 import ActualSlots from './Components/Actualslots';
 import Login from './Components/Login'
 import Submit from './Components/Submit';
+import DailyPlan from './Components/dailyPlan';
+import PastRecord from './Components/pastRecord';
+import Consistency from './Components/consistency';
 var templogin = [
   { "Username": "HitJatin", "Password": "#Jatin23" },
   { "Username": "Prarthana", "Password": "Prarthana" },
@@ -21,7 +24,10 @@ class App extends Component {
       previous: {},
       isModalOpen: false,
       isActual: false,
-      isPlanned: false
+      isPlanned: false,
+      isDaily:true,
+      isConsistency:false,
+      isRecords:false
     };
     this.toggleModal = this.toggleModal.bind(this);
     this.login = this.login.bind(this);
@@ -66,7 +72,7 @@ class App extends Component {
       var coreActual = document.getElementById("coreActual").value;
       console.log(coreActual);
       var prodActual = document.getElementById("prodActual").value;
-
+      var notes=document.getElementById("notes").value;
       // instantiate a headers object
       var myHeaders = new Headers();
       // add content type header to object
@@ -78,7 +84,8 @@ class App extends Component {
         "Actual": {
           "Core": coreActual,
           "Production": prodActual
-        }
+        },
+        "Notes":notes
 
       });
       // create a JSON object with parameters for API call and store in a variable
@@ -133,7 +140,15 @@ class App extends Component {
 
 
   render() {
-    var date, actual, planned;
+    var date, actual, planned,current;
+    if(this.state.isDaily)
+    current=<DailyPlan />;
+    else if(this.state.isConsistency)
+    current=<Consistency />;
+    else if(this.state.isRecords)
+    current=<PastRecord />;
+    else
+    alert("There is some error with components");
     document.body.style.backgroundImage = "url('./bgimage.jpg')";
     if (this.state.name !== "") {
       actual = <ActualSlots apiUrl="https://mj3a9u0swa.execute-api.ap-south-1.amazonaws.com/dev" userName={this.state.name} />;
@@ -142,6 +157,7 @@ class App extends Component {
     }
     return (<div className="App" >
       <Header logo='./skillpill.png' title="Progress Tracker" name={this.state.name} modalButton={this.toggleModal} />
+      {current}
       {date}
       <div className="row ">
         <div className="col-12 col-md-6 parentform">
