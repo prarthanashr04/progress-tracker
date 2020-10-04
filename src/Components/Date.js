@@ -1,5 +1,5 @@
 import React from 'react';
-const Dat = (props) => {
+const ThisDate = (props) => {
   var today = new Date();
   var month=today.toLocaleString('default', { month: 'long' });
   var date = today.getDate();
@@ -10,4 +10,4 @@ const Dat = (props) => {
 </div>);
 }
 
-export default Dat;
+export default ThisDate;

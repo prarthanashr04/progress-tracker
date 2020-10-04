@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
   
@@ -42,7 +43,10 @@ body{
 .parentform{
  
   justify-content: center;
-  display: inline-flex;
+  width: 46%;
+  padding-left: 2%;
+  padding-right: 2%;
+
   
 }
 .formslots{
