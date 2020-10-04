@@ -1,11 +1,29 @@
 import React, { Component } from 'react';
-import { Navbar, NavbarBrand, Nav, NavItem } from 'reactstrap';
+import { Navbar, NavbarBrand, Nav, NavItem} from 'reactstrap';
 import Member from './Member';
+import Login from './Login';
+
+var templogin = [
+  { "Username": "HitJatin", "Password": "#Jatin23" },
+  { "Username": "Prarthana", "Password": "Prarthana" },
+  { "Username": "Ritik", "Password": "Ritik" },
+]
 
 class Header extends Component {
 
-
-  render() {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isModalOpen: false
+    }
+    this.toggleModal = this.toggleModal.bind(this);
+  }
+  toggleModal() {
+    this.setState({
+      isModalOpen: !this.state.isModalOpen
+    });
+  }
+   render() {
     return (<div className="Header" >
       <Navbar fixed="top" dark color="dark" >
         <div className="container">
@@ -18,6 +36,7 @@ class Header extends Component {
               <Member modalButton={this.props.modalButton} name={this.props.name}/>
             </NavItem>
           </Nav>
+          <Login openModal={this.state.isModalOpen} modalButton={this.toggleModal}  login={this.props.login}/>
         </div>
       </Navbar>
     </div>);

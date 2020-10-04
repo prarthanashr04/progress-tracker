@@ -23,24 +23,53 @@ class App extends Component {
     this.state = {
       name: "",
       previous: {},
-      isModalOpen: false,
       isActual: false,
       isPlanned: false,
       isDaily: true,
       isConsistency: false,
       isRecords: false
     };
-    this.toggleModal = this.toggleModal.bind(this);
+   
     this.login = this.login.bind(this);
     this.submit = this.submit.bind(this);
 
   }
+  
+  profile(){
+    alert("method in construction");
+  }
 
-  toggleModal() {
+  dailyPlan(){
     this.setState({
-      isModalOpen: !this.state.isModalOpen
+      isDaily: true,
+      isConsistency: false,
+      isRecords: false
     });
   }
+  consistency(){
+    this.setState({
+      isDaily: false,
+      isConsistency: true,
+      isRecords: false
+    });
+  }
+  pastRecord(){
+    this.setState({
+      isDaily: false,
+      isConsistency: false,
+      isRecords: true
+    });
+  }
+  logout(){
+    this.setState({
+      isDaily: true,
+      isConsistency: false,
+      isRecords: false,
+      name: ""
+    });
+  }
+
+  
 
   login(userName, passWord) {
     var i, check = 0;
@@ -50,7 +79,7 @@ class App extends Component {
           name: userName,
           isPlanned: true
         });
-        this.toggleModal();
+        
         check = 1;
         break;
       }
@@ -158,13 +187,12 @@ class App extends Component {
     
     
 
-    return (/*<div className="App" >
-      <Header logo='./skillpill.png' title="Progress Tracker" name={this.state.name} modalButton={this.toggleModal} />
+    return (<div className="App" >
+      <Header logo='./skillpill.png' title="Progress Tracker" name={this.state.name} login={this.login} pastrecord={this.pastRecord} consistency={this.consistency} logout={this.logout} dailyPlan={this.dailyPlan} profile={this.profile}  />
       {current}
-      <Login openModal={this.state.isModalOpen} modalButton={this.toggleModal} login={this.login} />
-                <Submit onClick={this.submit} />
-    </div>*/
-<PastRecord />
+      <Submit onClick={this.submit} />
+    </div>
+
 
     );
   }

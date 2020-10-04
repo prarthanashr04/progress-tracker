@@ -13,7 +13,7 @@ class Login extends Component {
         var username=this.username.value;
         var password=this.password.value;
         this.props.login(username,password);
-        
+        this.props.modalButton();
     
       }
     
