@@ -171,9 +171,7 @@ class App extends Component {
       <Submit onClick={this.submit} />
     </div>
     );
-    
   }
-
 }
 
 export default App;
