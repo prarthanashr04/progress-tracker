@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
 import Header from './Components/Navbar';
-import Dat from './Components/Date';
-import PlannedSlots from './Components/Plannedslots';
-import ActualSlots from './Components/Actualslots';
+
+
 import Login from './Components/Login'
 import Submit from './Components/Submit';
+
 import DailyPlan from './Components/dailyPlan';
 import PastRecord from './Components/pastRecord';
 import Consistency from './Components/consistency';
+
 var templogin = [
   { "Username": "HitJatin", "Password": "#Jatin23" },
   { "Username": "Prarthana", "Password": "Prarthana" },
@@ -25,9 +26,9 @@ class App extends Component {
       isModalOpen: false,
       isActual: false,
       isPlanned: false,
-      isDaily:true,
-      isConsistency:false,
-      isRecords:false
+      isDaily: true,
+      isConsistency: false,
+      isRecords: false
     };
     this.toggleModal = this.toggleModal.bind(this);
     this.login = this.login.bind(this);
@@ -61,18 +62,18 @@ class App extends Component {
   submit() {
     var cDate = new Date();
     var timeInMilliSeconds = cDate.getTime();
-        var timeInSeconds = Math.floor(timeInMilliSeconds / 1000);
-        var hrs = cDate.getHours();
-        var min = cDate.getMinutes();
-        var sec = cDate.getSeconds();
-        var hrsMinsInSecs = (hrs * 60 * 60) + (min * 60) + sec;
-        var dateInSeconds = timeInSeconds - hrsMinsInSecs+86400;
+    var timeInSeconds = Math.floor(timeInMilliSeconds / 1000);
+    var hrs = cDate.getHours();
+    var min = cDate.getMinutes();
+    var sec = cDate.getSeconds();
+    var hrsMinsInSecs = (hrs * 60 * 60) + (min * 60) + sec;
+    var dateInSeconds = timeInSeconds - hrsMinsInSecs + 86400;
     if (document.getElementById("coreActual") !== null) {
-        
+
       var coreActual = document.getElementById("coreActual").value;
       console.log(coreActual);
       var prodActual = document.getElementById("prodActual").value;
-      var notes=document.getElementById("notes").value;
+      var notes = document.getElementById("notes").value;
       // instantiate a headers object
       var myHeaders = new Headers();
       // add content type header to object
@@ -80,12 +81,12 @@ class App extends Component {
       // using built in JSON utility package turn object to string and store in a variable
       var raw = JSON.stringify({
         "UserName": this.state.name,
-        "Date": dateInSeconds-86400,
+        "Date": dateInSeconds - 86400,
         "Actual": {
           "Core": coreActual,
           "Production": prodActual
         },
-        "Notes":notes
+        "Notes": notes
 
       });
       // create a JSON object with parameters for API call and store in a variable
@@ -113,7 +114,7 @@ class App extends Component {
     var raw2 = JSON.stringify({
       "UserName": this.state.name,
       "Date": dateInSeconds,
-      "Name":this.state.name,
+      "Name": this.state.name,
       "Planned": {
         "Core": corePlan,
         "Production": prodPlan
@@ -140,36 +141,31 @@ class App extends Component {
 
 
   render() {
-    var date, actual, planned,current;
-    if(this.state.isDaily)
-    current=<DailyPlan />;
-    else if(this.state.isConsistency)
-    current=<Consistency />;
-    else if(this.state.isRecords)
-    current=<PastRecord />;
-    else
-    alert("There is some error with components");
-    document.body.style.backgroundImage = "url('./bgimage.jpg')";
+    var date, actual, planned, current;
     if (this.state.name !== "") {
-      actual = <ActualSlots apiUrl="https://mj3a9u0swa.execute-api.ap-south-1.amazonaws.com/dev" userName={this.state.name} />;
-      date = <Dat />;
-      planned = <PlannedSlots config={["Core", "Production"]} />
+      if (this.state.isDaily)
+        current = <DailyPlan  name = {this.state.name}/>;
+      else if (this.state.isConsistency)
+        current = <Consistency />;
+      else if (this.state.isRecords)
+        current = <PastRecord />;
+      else
+        alert("There is some error with components");
     }
-    return (<div className="App" >
+
+    document.body.style.backgroundImage = "url('./bgimage.jpg')";
+
+    
+    
+
+    return (/*<div className="App" >
       <Header logo='./skillpill.png' title="Progress Tracker" name={this.state.name} modalButton={this.toggleModal} />
       {current}
-      {date}
-      <div className="row ">
-        <div className="col-12 col-md-6 parentform">
-          {actual}
-        </div>
-        <div className="col-12 col-md-6 parentform">
-          {planned}
-        </div>
-      </div>
       <Login openModal={this.state.isModalOpen} modalButton={this.toggleModal} login={this.login} />
-      <Submit onClick={this.submit} />
-    </div>
+                <Submit onClick={this.submit} />
+    </div>*/
+<PastRecord />
+
     );
   }
 }
