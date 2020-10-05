@@ -1,8 +1,6 @@
 import React, { Component} from 'react';
 import {Button, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
-
-
 class Member extends Component {
     
     constructor(props) {
@@ -32,13 +30,13 @@ class Member extends Component {
             {this.props.name}
             </DropdownToggle>
             <DropdownMenu>
-              <DropdownItem >Profile</DropdownItem>
+              <DropdownItem onClick={this.props.profile}>Profile</DropdownItem>
               <DropdownItem divider />
-              <DropdownItem >Daily Progress</DropdownItem>
-              <DropdownItem >Consistency</DropdownItem>
-              <DropdownItem>Past Record</DropdownItem>
+              <DropdownItem onClick={this.props.dailyPlan}>Daily Progress</DropdownItem>
+              <DropdownItem onClick={this.props.consistency}>Consistency</DropdownItem>
+              <DropdownItem onClick={this.props.pastRecord}>Past Record</DropdownItem>
               <DropdownItem divider />
-              <DropdownItem>Log out</DropdownItem>
+              <DropdownItem onClick={this.props.logout}>Log out</DropdownItem>
             </DropdownMenu>
           </ButtonDropdown>);
     }
