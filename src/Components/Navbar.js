@@ -3,12 +3,6 @@ import { Navbar, NavbarBrand, Nav, NavItem} from 'reactstrap';
 import Member from './Member';
 import Login from './Login';
 
-var templogin = [
-  { "Username": "HitJatin", "Password": "#Jatin23" },
-  { "Username": "Prarthana", "Password": "Prarthana" },
-  { "Username": "Ritik", "Password": "Ritik" },
-]
-
 class Header extends Component {
 
   constructor(props) {
@@ -33,7 +27,7 @@ class Header extends Component {
               <div id="heading">{this.props.title}</div></div></NavbarBrand>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <Member modalButton={this.props.modalButton} name={this.props.name}/>
+              <Member modalButton={this.toggleModal} name={this.props.name} pastRecord={this.props.pastRecord} consistency={this.props.consistency} logout={this.props.logout} dailyPlan={this.props.dailyPlan} profile={this.props.profile}/>
             </NavItem>
           </Nav>
           <Login openModal={this.state.isModalOpen} modalButton={this.toggleModal}  login={this.props.login}/>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
 import { Button, Navbar } from 'reactstrap';
+import Submit from './Submit';
 import PlannedSlots from './Plannedslots';
 import ThisDate from './Date';
 import ActualSlots from './Actualslots';
@@ -18,7 +19,7 @@ class DailyPlan extends Component {
                         <PlannedSlots config={["Core", "Production"]} />
                     </div>
                 </div>
-               
+                <Submit onClick={this.submit} />
             </div>
         )
     }

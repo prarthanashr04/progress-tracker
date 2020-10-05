@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+import axios from 'axios';
 import ReactTable from "react-table"; 
-import 'react-table/react-table.css'
+import 'react-table/react-table.css';
 import '../App.css';
 export default class PastRecord extends Component {
   constructor(props){
