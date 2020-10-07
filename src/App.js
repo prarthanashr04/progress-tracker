@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from './Components/Navbar';
 
-
-import Login from './Components/Login'
-import Submit from './Components/Submit';
-
 import DailyPlan from './Components/dailyPlan';
 import PastRecord from './Components/pastRecord';
 import Consistency from './Components/consistency';
@@ -25,14 +21,17 @@ class App extends Component {
       previous: {},
       isActual: false,
       isPlanned: false,
-      isDaily: true,
+      isDaily: false,
       isConsistency: false,
       isRecords: false
     };
    
     this.login = this.login.bind(this);
     this.submit = this.submit.bind(this);
-
+    this.logout = this.logout.bind(this);
+    this.dailyPlan=this.dailyPlan.bind(this);
+    this.consistency=this.consistency.bind(this);
+    this.pastRecord=this.pastRecord.bind(this);
   }
   
   profile(){
@@ -77,7 +76,7 @@ class App extends Component {
       if (templogin[i].Username === userName && templogin[i].Password === passWord) {
         this.setState({
           name: userName,
-          isPlanned: true
+          isDaily: true
         });
         
         check = 1;
@@ -188,9 +187,8 @@ class App extends Component {
     
 
     return (<div className="App" >
-      <Header logo='./skillpill.png' title="Progress Tracker" name={this.state.name} login={this.login} pastrecord={this.pastRecord} consistency={this.consistency} logout={this.logout} dailyPlan={this.dailyPlan} profile={this.profile}  />
+      <Header logo='./skillpill.png' title="Progress Tracker" name={this.state.name} login={this.login} pastRecord={this.pastRecord} consistency={this.consistency} logout={this.logout} dailyPlan={this.dailyPlan} profile={this.profile}  />
       {current}
-      <Submit onClick={this.submit} />
     </div>
 
 
