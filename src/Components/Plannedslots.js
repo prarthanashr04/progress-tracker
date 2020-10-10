@@ -24,9 +24,7 @@ class PlannedSlots extends Component{
                 <h5 className="col">Task Name</h5>
                 <h5 className="col">No. of Slots</h5>
             </div>
-            <form>
-                {tasks}
-            </form>
+            {tasks}
         </div>
     </Form>);
     }

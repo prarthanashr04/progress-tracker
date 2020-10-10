@@ -13,7 +13,18 @@ export default class PastRecord extends Component {
   }
   async getUsersData(){
     const res = await axios.get('https://mj3a9u0swa.execute-api.ap-south-1.amazonaws.com/dev/dataanalysis?UserName=Ritikagarwal')
-    console.log(res.data)
+    
+
+
+for(var i = 0 ; i<res.data.length; i++)
+{ 
+var date = new Date(res.data[i]["Date"]*1000);
+var day = date.getDate();
+var month = date.getMonth();
+var year = date.getFullYear();
+var fullDate = day + "-" +(month + 1) + "-" + year;
+res.data[i]["Date"] = fullDate
+}
     this.setState({loading:false, users: res.data})
   }
   componentDidMount(){
@@ -25,10 +36,7 @@ export default class PastRecord extends Component {
       accessor: 'Date',
      }
      ,
-{  
-     Header: 'Username',  
-     accessor: 'UserName' ,
-     },
+
 {  
       Header: 'Production-planned',  
       accessor: 'Planned.Production' ,
@@ -49,7 +57,10 @@ export default class PastRecord extends Component {
      accessor: 'Actual.Core',
      },
 
-
+{  
+     Header: 'Notes',  
+     accessor: 'Notes' ,
+     }
      
   ]
     return (
