@@ -9,7 +9,7 @@ import Consistency from './Components/consistency';
 var templogin = [
   { "Username": "HitJatin", "Password": "#Jatin23" },
   { "Username": "Prarthana", "Password": "Prarthana" },
-  { "Username": "Ritik", "Password": "Ritik" },
+  { "Username": "Ritikagarwal", "Password": "Ritik" },
 ]
 
 class App extends Component {
@@ -174,7 +174,7 @@ class App extends Component {
       if (this.state.isDaily)
         current = <DailyPlan  name = {this.state.name}/>;
       else if (this.state.isConsistency)
-        current = <Consistency />;
+        current = <Consistency name={this.state.name} apiUrl="https://mj3a9u0swa.execute-api.ap-south-1.amazonaws.com/dev/dataanalysis/consistency" />;
       else if (this.state.isRecords)
         current = <PastRecord />;
       else
