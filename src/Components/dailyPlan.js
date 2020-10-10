@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import '../App.css';
-import { Button, Navbar } from 'reactstrap';
 import Submit from './Submit';
 import PlannedSlots from './Plannedslots';
 import ThisDate from './Date';
@@ -73,7 +72,7 @@ class DailyPlan extends Component {
                 <ThisDate />;
                 <div className="row ">
                 {actual}
-                    <div className="parentform">
+                    <div className="col-12 col-md-6 parentform">
                         <PlannedSlots config={["Core", "Production"]} planned={this.state.isPlanned} data={this.state.plannedData}/>
                     </div>
                     {submit}
