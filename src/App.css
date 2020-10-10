@@ -1,4 +1,8 @@
-
+.ReactTable {
+margin: 5%;
+    margin-top: 150px;
+background-color:aliceblue;
+}
 .App {
   text-align: center;
   

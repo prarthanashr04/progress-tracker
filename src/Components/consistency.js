@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import '../App.css';
 import { Table } from 'reactstrap';
 
-var week = { "Core": 76, "Production": 46 };
-var month = { "Core": 70, "Production": 40 };
-var quarter = { "Core": 80, "Production": 90 };
-
 class ConsistencyTable extends Component {
   render() {
     return (

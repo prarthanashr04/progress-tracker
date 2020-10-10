@@ -4,11 +4,19 @@ import { Form,Label } from 'reactstrap';
 class PlannedSlots extends Component{
     render(){
         var tasks=[];
+        var data=Object.values(this.props.data);
+        if(this.props.planned)
         for(var i=0;i<this.props.config.length;i++){
             tasks.push(
                 <PlanTask name={this.props.config[i]} id={i}/>
             )
         }
+        else
+        for(var i=0;i<this.props.config.length;i++){
+            tasks.push(
+                <ShowTask name={this.props.config[i]} id={i} data={data[i]}/>
+            )
+        }        
         return (<Form className="formslots">
         <div className="col-12 col-md-10">
             <h1>Let's plan our day</h1>
@@ -28,6 +36,14 @@ class PlanTask extends Component{
         return(<div className="inlineclass pslots">
         <Label htmlFor="taskname" md={4}>{this.props.name}</Label>
         <input id={id} className="col" type="number" placeholder="Planned Slots" required />
+    </div>);
+    }
+}
+class ShowTask extends Component{
+    render(){
+        return(<div className="inlineclass pslots">
+        <Label htmlFor="taskname" md={6}>{this.props.name}</Label>
+        <Label htmlFor="taskslots" md={6}>{this.props.data}</Label>
     </div>);
     }
 }
