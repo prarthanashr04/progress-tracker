@@ -3,9 +3,10 @@ import '../App.css';
 import { Table } from 'reactstrap';
 
 class ConsistencyTable extends Component {
-  render() {
-    return (
+ render() {
+  return (
       <div className="column">
+        <h1 style={{ color: 'black' }} >{this.props.head}</h1>
         <Table dark>
           <thead>
             <tr>
@@ -82,9 +83,12 @@ class Consistency extends Component {
     if(this.state.isConsistency)
     return (
       <div className="row">
-        <ConsistencyTable core={this.state.week.Core} prod={this.state.week.Production} />
-        <ConsistencyTable core={this.state.month.Core} prod={this.state.month.Production} />
-        <ConsistencyTable core={this.state.quarter.Core} prod={this.state.quarter.Production} />
+        
+        <ConsistencyTable core={this.state.week.Core} prod={this.state.week.Production} head="Week"/>
+        
+        <ConsistencyTable core={this.state.month.Core} prod={this.state.month.Production} head="Month"/>
+        
+        <ConsistencyTable core={this.state.quarter.Core} prod={this.state.quarter.Production} head="Quarter" />
       </div>
     );
     else
