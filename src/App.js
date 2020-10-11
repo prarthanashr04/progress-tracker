@@ -174,7 +174,7 @@ class App extends Component {
       else if (this.state.isConsistency)
         current = <Consistency name={this.state.name} apiUrl="https://mj3a9u0swa.execute-api.ap-south-1.amazonaws.com/dev/dataanalysis/consistency" />;
       else if (this.state.isRecords)
-        current = <PastRecord />;
+        current = <PastRecord name={this.state.name}/>;
       else
         alert("There is some error with components");
     }
