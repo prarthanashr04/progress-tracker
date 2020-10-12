@@ -39,7 +39,7 @@ class PlanTask extends Component{
         var id="plan"+this.props.id;
         return(<div className="inlineclass pslots">
         <Label htmlFor="taskname" md={4}>{this.props.name}</Label>
-        <input id={id} className="col" type="number" placeholder="Planned Slots" required />
+        <input id={id} className="col" type="number" placeholder="Planned Slots" min="1" max="10" required />
     </div>);
     }
 }

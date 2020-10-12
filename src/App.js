@@ -9,7 +9,7 @@ import Consistency from './Components/consistency';
 var templogin = [
   { "Username": "HitJatin", "Password": "#Jatin23" },
   { "Username": "Prarthana", "Password": "Prarthana" },
-  { "Username": "Ritikagarwal", "Password": "Ritik" },
+  { "Username": "Ritik", "Password": "Ritik" },
   { "Username": "Khyati", "Password": "Khyati" },
   { "Username": "Aman", "Password": "Aman" },
   { "Username": "Palak", "Password": "Palak" },
