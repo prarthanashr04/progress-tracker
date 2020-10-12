@@ -4,6 +4,33 @@ import { Table } from 'reactstrap';
 
 class ConsistencyTable extends Component {
  render() {
+   const red ={
+    backgroundColor: "red",
+    color:"white"
+   };
+   const yellow={
+    backgroundColor:"yellow",
+    color:"black"
+   };
+   const green={
+    backgroundColor:"rgb(71, 253, 71)",
+    color:"black"
+   };
+   var core,prod;
+   if(this.props.core>=90)
+      core=green;
+    else if(this.props.core>=75)
+      core=yellow;
+    else
+      core=red;
+
+      if(this.props.prod>=90)
+      prod=green;
+    else if(this.props.prod>=75)
+      prod=yellow;
+    else
+      prod=red;
+
   return (
       <div className="column">
         <h1 style={{ color: 'black' }} >{this.props.head}</h1>
@@ -15,13 +42,15 @@ class ConsistencyTable extends Component {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Core</td>
+
+            <tr style={core} className="core">
+              <td >Core</td>
               <td>{parseInt(this.props.core)}</td>
             </tr>
-            <tr>
-              <td>Production</td>
+            <tr style={prod} className="prod">
+              <td >Production</td>
               <td>{parseInt(this.props.prod)}</td>
+
             </tr>
           </tbody>
         </Table>
