@@ -17,11 +17,11 @@ class ConsistencyTable extends Component {
           <tbody>
             <tr>
               <td>Core</td>
-              <td>{this.props.core}</td>
+              <td>{parseInt(this.props.core)}</td>
             </tr>
             <tr>
               <td>Production</td>
-              <td>{this.props.prod}</td>
+              <td>{parseInt(this.props.prod)}</td>
             </tr>
           </tbody>
         </Table>

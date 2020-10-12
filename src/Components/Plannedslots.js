@@ -19,7 +19,7 @@ class PlannedSlots extends Component{
                     <div><ShowTask name={this.props.config[i]} id={i} data={data[i]}/><br/></div>
                 )
             }        
-            head="Your toady's Plan";
+            head="Your today's Plan";
         }
         return (<Form className="formslots">
         <div className="col-12 col-md-10">
