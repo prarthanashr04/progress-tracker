@@ -3,9 +3,37 @@ import '../App.css';
 import { Table } from 'reactstrap';
 
 class ConsistencyTable extends Component {
-  render() {
-    return (
+ render() {
+   const red ={
+    backgroundColor: "red",
+    color:"white"
+   };
+   const yellow={
+    backgroundColor:"yellow",
+    color:"black"
+   };
+   const green={
+    backgroundColor:"rgb(71, 253, 71)",
+    color:"black"
+   };
+   var core,prod;
+   if(this.props.core>=90)
+      core=green;
+    else if(this.props.core>=75)
+      core=yellow;
+    else
+      core=red;
+
+      if(this.props.prod>=90)
+      prod=green;
+    else if(this.props.prod>=75)
+      prod=yellow;
+    else
+      prod=red;
+
+  return (
       <div className="column">
+        <h1 style={{ color: 'black' }} >{this.props.head}</h1>
         <Table dark>
           <thead>
             <tr>
@@ -14,12 +42,12 @@ class ConsistencyTable extends Component {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Core</td>
+            <tr style={core} className="core">
+              <td >Core</td>
               <td>{this.props.core}</td>
             </tr>
-            <tr>
-              <td>Production</td>
+            <tr style={prod} className="prod">
+              <td >Production</td>
               <td>{this.props.prod}</td>
             </tr>
           </tbody>
@@ -82,9 +110,12 @@ class Consistency extends Component {
     if(this.state.isConsistency)
     return (
       <div className="row">
-        <ConsistencyTable core={this.state.week.Core} prod={this.state.week.Production} />
-        <ConsistencyTable core={this.state.month.Core} prod={this.state.month.Production} />
-        <ConsistencyTable core={this.state.quarter.Core} prod={this.state.quarter.Production} />
+        
+        <ConsistencyTable core={this.state.week.Core} prod={this.state.week.Production} head="Week"/>
+        
+        <ConsistencyTable core={this.state.month.Core} prod={this.state.month.Production} head="Month"/>
+        
+        <ConsistencyTable core={this.state.quarter.Core} prod={this.state.quarter.Production} head="Quarter" />
       </div>
     );
     else

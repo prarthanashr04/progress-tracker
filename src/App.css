@@ -48,8 +48,8 @@ body{
  
   justify-content: center;
   width: 46%;
-  padding-left: 2%;
-  padding-right: 2%;
+  margin-left: 2%;
+  margin-right: 2%;
 
   
 }
@@ -79,6 +79,20 @@ body{
 }
 * {
   box-sizing: border-box;
+}
+
+.Green{
+  background-color:rgb(71, 253, 71);
+  color:black;
+}
+.Red{
+  background-color: red;
+  color:white;
+}
+
+.Amber{
+  background-color:yellow;
+  color:black;
 }
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
