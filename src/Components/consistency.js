@@ -42,13 +42,15 @@ class ConsistencyTable extends Component {
             </tr>
           </thead>
           <tbody>
+
             <tr style={core} className="core">
               <td >Core</td>
-              <td>{this.props.core}</td>
+              <td>{parseInt(this.props.core)}</td>
             </tr>
             <tr style={prod} className="prod">
               <td >Production</td>
-              <td>{this.props.prod}</td>
+              <td>{parseInt(this.props.prod)}</td>
+
             </tr>
           </tbody>
         </Table>
