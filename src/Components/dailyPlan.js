@@ -50,6 +50,7 @@ class DailyPlan extends Component {
         var output=false;
         output=this.props.submit(this.state.isActual);
         if(output!==false){
+            console.log(data)
             var data={
                 "Core":output[0],
                 "Production":output[1]
@@ -72,7 +73,7 @@ class DailyPlan extends Component {
                 <ThisDate />;
                 <div className="row ">
                 {actual}
-                    <div className="col-12 col-md-6 parentform">
+                    <div className="parentform">
                         <PlannedSlots config={["Core", "Production"]} planned={this.state.isPlanned} data={this.state.plannedData}/>
                     </div>
                     {submit}
