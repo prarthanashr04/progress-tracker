@@ -25,7 +25,7 @@ class App extends Component {
       previous: {},
       isActual: false,
       isPlanned: false,
-      isDaily: false,
+      isDaily: true,
       isConsistency: false,
       isRecords: false
     };
@@ -56,7 +56,7 @@ class App extends Component {
       isRecords: false
     });
   }
-  pastRecord() {
+         pastRecord() {
     this.setState({
       isDaily: false,
       isConsistency: false,
@@ -179,13 +179,15 @@ class App extends Component {
         alert("There is some error with components");
     }
 
-    document.body.style.backgroundImage = "url('./bgimage.jpg')";
-
+    document.body.style.backgroundImage = "url('/progress-tracker/bgimage.jpg')";
+    document.body.style.minHeight=window.screen.height+"px";
+    document.body.style.width=window.screen.width;
+    console.log(window.screen.height+" "+window.screen.width);
 
 
 
     return (<div className="App" >
-      <Header logo='./skillpill.png' title="Progress Tracker" name={this.state.name} login={this.login} pastRecord={this.pastRecord} consistency={this.consistency} logout={this.logout} dailyPlan={this.dailyPlan} profile={this.profile} />
+      <Header logo='/progress-tracker/skillpill.png' title="Progress Tracker" name={this.state.name} login={this.login} pastRecord={this.pastRecord} consistency={this.consistency} logout={this.logout} dailyPlan={this.dailyPlan} profile={this.profile} />
       {current}
     </div>
 
