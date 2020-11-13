@@ -4,7 +4,7 @@ import { Form, Row, Label } from 'reactstrap';
 class ActualSlots extends Component {
     
     render() {
-        return (<div className="col-sm-12 col-md-6"><Form className="formslots ">
+        return (<div className="parentform"><Form className="formslots ">
             <div className="col-12 row offset-sm-3">
                 <h1>Actual slots</h1>
             </div>
