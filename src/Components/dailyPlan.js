@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import '../App.css';
-import { Button, Navbar } from 'reactstrap';
 import Submit from './Submit';
 import PlannedSlots from './Plannedslots';
 import ThisDate from './Date';
@@ -51,6 +50,7 @@ class DailyPlan extends Component {
         var output=false;
         output=this.props.submit(this.state.isActual);
         if(output!==false){
+            console.log(data)
             var data={
                 "Core":output[0],
                 "Production":output[1]

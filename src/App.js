@@ -9,7 +9,11 @@ import Consistency from './Components/consistency';
 var templogin = [
   { "Username": "HitJatin", "Password": "#Jatin23" },
   { "Username": "Prarthana", "Password": "Prarthana" },
-  { "Username": "Ritikagarwal", "Password": "Ritik" },
+  { "Username": "Ritik", "Password": "Ritik" },
+  { "Username": "Khyati", "Password": "Khyati" },
+  { "Username": "Aman", "Password": "Aman" },
+  { "Username": "Palak", "Password": "Palak" },
+  { "Username": "Mukesh", "Password": "Mukesh" },
 ]
 
 class App extends Component {
@@ -103,9 +107,7 @@ class App extends Component {
       return false;
     }
     else {
-
       if (actual) {
-
         var coreActual = document.getElementById("coreActual").value;
         var prodActual = document.getElementById("prodActual").value;
         var notes = document.getElementById("notes").value.trim();
@@ -128,21 +130,19 @@ class App extends Component {
           this.setData(raw, api);
         }
       }
-      else {
-        var raw2 = JSON.stringify({
-          "UserName": this.state.name,
-          "Date": dateInSeconds,
-          "Name": this.state.name,
-          "Planned": {
-            "Core": corePlan,
-            "Production": prodPlan
-          }
-        });
-        var api2 = "https://mj3a9u0swa.execute-api.ap-south-1.amazonaws.com/dev"
-        this.setData(raw2, api2)
-        var data = [corePlan, prodPlan]
-        return data;
-      }
+      var raw2 = JSON.stringify({
+        "UserName": this.state.name,
+        "Date": dateInSeconds,
+        "Name": this.state.name,
+        "Planned": {
+          "Core": corePlan,
+          "Production": prodPlan
+        }
+      });
+      var api2 = "https://mj3a9u0swa.execute-api.ap-south-1.amazonaws.com/dev"
+      this.setData(raw2, api2)
+      var data = [corePlan, prodPlan];
+      return data;
     }
   }
 
@@ -174,7 +174,7 @@ class App extends Component {
       else if (this.state.isConsistency)
         current = <Consistency name={this.state.name} apiUrl="https://mj3a9u0swa.execute-api.ap-south-1.amazonaws.com/dev/dataanalysis/consistency" />;
       else if (this.state.isRecords)
-        current = <PastRecord />;
+        current = <PastRecord name={this.state.name} />;
       else
         alert("There is some error with components");
     }
